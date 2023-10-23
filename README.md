@@ -2,9 +2,10 @@
 
 Notable is an app for Android notification reminders
 
-<a href="https://f-droid.org/packages/com.icechen1.notable.pro" target="_blank">
-<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="90"/></a>
-<a href="https://play.google.com/store/apps/details?id=com.icechen1.notable" target="_blank">
-<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="90"/></a>
+The original version hasn't been updated in a while and can no longer be installed directly because of new security restrictions of Android 14. You can still install it using `adb install --bypass-low-target-sdk-block THE_APK.apk` though.
 
-Released under GPLv3
+This fork:
+* updates the SDK used so that it's possible to install it on Android 14.
+* removes the scheduling feature as I don't use it and it seemed that the library it depends on caused build problems (I didn't dig further though).
+
+Released under GPLv3.
