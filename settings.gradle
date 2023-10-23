@@ -1,3 +1,2 @@
 include ':notableLibrary'
-include ':notable'
 include ':notablePro'
