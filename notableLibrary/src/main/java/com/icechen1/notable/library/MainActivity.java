@@ -30,12 +30,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.fourmob.datetimepicker.date.DatePickerDialog;
+//import com.fourmob.datetimepicker.date.DatePickerDialog;
 import com.icechen1.notable.library.utils.NotificationBuilder;
 import com.icechen1.notable.library.utils.NotificationDataSource;
 import com.icechen1.notable.library.utils.NotificationItem;
-import com.sleepbot.datetimepicker.time.RadialPickerLayout;
-import com.sleepbot.datetimepicker.time.TimePickerDialog;
+//import com.sleepbot.datetimepicker.time.RadialPickerLayout;
+//import com.sleepbot.datetimepicker.time.TimePickerDialog;
 
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
@@ -48,7 +48,8 @@ import java.util.List;
 @EActivity
 public class MainActivity
     extends FragmentActivity
-    implements OnClickListener,DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener
+    implements OnClickListener
+//		, DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener
 {
 
 	/* TODO
@@ -84,10 +85,10 @@ public class MainActivity
     private Calendar reminderCalendar;
     private Toolbar mToolbar;
 
-	@ViewById
-	Button dateBtn;
-	@ViewById
-	Button TimeBtn;
+//	@ViewById
+//	Button dateBtn;
+//	@ViewById
+//	Button TimeBtn;
 
 	@ViewById
 	ImageButton checkmarkGray;
@@ -101,11 +102,11 @@ public class MainActivity
 	@ViewById
 	ImageButton checkmarkRed;
 
-	@ViewById
-	RelativeLayout reminderSet;
+//	@ViewById
+//	RelativeLayout reminderSet;
 
-	@ViewById
-	RelativeLayout reminderNone;
+//	@ViewById
+//	RelativeLayout reminderNone;
 
 	@Override
 	public void onResume(){
@@ -235,15 +236,15 @@ public class MainActivity
 		}
 
         //Create the reminder time calendar object according to last saved time
-        if(item.getReminderTime()>0){
-            reminderCalendar.setTimeInMillis(item.getReminderTime());
-            //Show it
-            dateBtn.setText(DateFormat.getDateFormat(this).format(reminderCalendar.getTime()));
-            TimeBtn.setText(DateFormat.getTimeFormat(this).format(reminderCalendar.getTime()));
-            reminderSet.setVisibility(View.VISIBLE);
-            reminderNone.setVisibility(View.GONE);
-            useAlarm = true;
-        }
+//        if(item.getReminderTime()>0){
+//            reminderCalendar.setTimeInMillis(item.getReminderTime());
+//            //Show it
+//            dateBtn.setText(DateFormat.getDateFormat(this).format(reminderCalendar.getTime()));
+//            TimeBtn.setText(DateFormat.getTimeFormat(this).format(reminderCalendar.getTime()));
+//            reminderSet.setVisibility(View.VISIBLE);
+//            reminderNone.setVisibility(View.GONE);
+//            useAlarm = true;
+//        }
 
 		
 	}
@@ -395,8 +396,8 @@ public class MainActivity
         //Preset the hour to current hour + 1
         reminderCalendar.set(Calendar.HOUR,reminderCalendar.get(Calendar.HOUR)+1);
         //Show it
-        dateBtn.setText(DateFormat.getDateFormat(this).format(reminderCalendar.getTime()));
-        TimeBtn.setText(DateFormat.getTimeFormat(this).format(reminderCalendar.getTime()));
+//        dateBtn.setText(DateFormat.getDateFormat(this).format(reminderCalendar.getTime()));
+//        TimeBtn.setText(DateFormat.getTimeFormat(this).format(reminderCalendar.getTime()));
 
         if(savedId != -1){
             Log.i(TAG, "Loading from database: " + savedId);
@@ -468,31 +469,31 @@ public class MainActivity
       }
     }
 
-    @Click
-    void dateBtn(){
-        final Calendar calendar = Calendar.getInstance();
-        final DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(this, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), true);
-        datePickerDialog.show(getSupportFragmentManager(), "DATEPICKER");
-    }
-    @Click
-    void TimeBtn(){
-        final Calendar calendar = Calendar.getInstance();
-        final TimePickerDialog timePickerDialog = TimePickerDialog.newInstance(this, calendar.get(Calendar.HOUR_OF_DAY) ,calendar.get(Calendar.MINUTE), DateFormat.is24HourFormat(this), true);
-        timePickerDialog.show(getSupportFragmentManager(), "TIMEPICKER");
-    }
+//    @Click
+//    void dateBtn(){
+//        final Calendar calendar = Calendar.getInstance();
+//        final DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(this, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), true);
+//        datePickerDialog.show(getSupportFragmentManager(), "DATEPICKER");
+//    }
+//    @Click
+//    void TimeBtn(){
+//        final Calendar calendar = Calendar.getInstance();
+//        final TimePickerDialog timePickerDialog = TimePickerDialog.newInstance(this, calendar.get(Calendar.HOUR_OF_DAY) ,calendar.get(Calendar.MINUTE), DateFormat.is24HourFormat(this), true);
+//        timePickerDialog.show(getSupportFragmentManager(), "TIMEPICKER");
+//    }
 
-    @Click
-    void reminderAddBtn(){
-        reminderSet.setVisibility(View.VISIBLE);
-        reminderNone.setVisibility(View.GONE);
-        useAlarm = true;
-    }
-    @Click
-    void cancelAlarmSet(){
-        reminderSet.setVisibility(View.GONE);
-        reminderNone.setVisibility(View.VISIBLE);
-        useAlarm = false;
-    }
+//    @Click
+//    void reminderAddBtn(){
+//        reminderSet.setVisibility(View.VISIBLE);
+//        reminderNone.setVisibility(View.GONE);
+//        useAlarm = true;
+//    }
+//    @Click
+//    void cancelAlarmSet(){
+//        reminderSet.setVisibility(View.GONE);
+//        reminderNone.setVisibility(View.VISIBLE);
+//        useAlarm = false;
+//    }
 
   	@Click
     void checkmark_gray(){
@@ -533,21 +534,21 @@ public class MainActivity
 
 	}
 
-    @Override
-    public void onDateSet(DatePickerDialog datePickerDialog, int y, int m, int d) {
-        //Update
-        reminderCalendar.set(y,m,d);
-        //Show it
-        dateBtn.setText(DateFormat.getDateFormat(this).format(reminderCalendar.getTime()));
-    }
-
-    @Override
-    public void onTimeSet(RadialPickerLayout radialPickerLayout, int hourOfDay, int min) {
-        //update
-        reminderCalendar.set(Calendar.HOUR_OF_DAY,hourOfDay);
-        reminderCalendar.set(Calendar.MINUTE,min);
-        //Show it
-        TimeBtn.setText(DateFormat.getTimeFormat(this).format(reminderCalendar.getTime()));
-
-    }
+//    @Override
+//    public void onDateSet(DatePickerDialog datePickerDialog, int y, int m, int d) {
+//        //Update
+//        reminderCalendar.set(y,m,d);
+//        //Show it
+//        dateBtn.setText(DateFormat.getDateFormat(this).format(reminderCalendar.getTime()));
+//    }
+//
+//    @Override
+//    public void onTimeSet(RadialPickerLayout radialPickerLayout, int hourOfDay, int min) {
+//        //update
+//        reminderCalendar.set(Calendar.HOUR_OF_DAY,hourOfDay);
+//        reminderCalendar.set(Calendar.MINUTE,min);
+//        //Show it
+//        TimeBtn.setText(DateFormat.getTimeFormat(this).format(reminderCalendar.getTime()));
+//
+//    }
 }
