@@ -22,6 +22,7 @@ android {
             abortOnError false
         }
     }
+    namespace 'com.icechen1.notable.library'
 
 }
 

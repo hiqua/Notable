@@ -14,10 +14,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+    namespace 'com.icechen1.notable.pro'
+    lint {
+        abortOnError false
+    }
 
-      lintOptions {
-          abortOnError false
-      }
 }
 
 dependencies {
