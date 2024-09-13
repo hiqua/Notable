@@ -111,11 +111,11 @@ public class MainActivity
 	@Override
 	public void onResume(){
 		super.onResume();
-        Intent Intent = new Intent(this, com.icechen1.notable.library.NotificationService_.class);
+        Intent intent = new Intent(this, com.icechen1.notable.library.NotificationService_.class);
         Bundle bundle = new Bundle();
         bundle.putString("action", "boot");
-        Intent.putExtras(bundle);
-        startService(Intent);
+        intent.putExtras(bundle);
+        startService(intent);
 
 		MenuItem historyItem = mToolbar.getMenu().findItem(R.id.menu_history);
 		if(historyItem != null) {
